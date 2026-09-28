@@ -24,3 +24,184 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* ========================================
+   HERO - SLOW PREMIUM LOAD ANIMATION
+======================================== */
+
+.hero-badge {
+  opacity: 0;
+  animation: heroBadgeEnter 1.4s ease-out 0.2s forwards;
+}
+
+.hero-heading {
+  opacity: 0;
+  animation: heroTextEnter 1.6s ease-out 0.45s forwards;
+}
+
+.hero-description {
+  opacity: 0;
+  animation: heroTextEnter 1.6s ease-out 0.7s forwards;
+}
+
+.hero-buttons {
+  opacity: 0;
+  animation: heroButtonsEnter 1.5s ease-out 0.95s forwards;
+}
+
+
+/* IMAGE */
+
+.hero-person-image {
+  opacity: 0;
+  animation: heroImageEnter 2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+
+/* GOLD GLOW */
+
+.hero-glow {
+  opacity: 0;
+  animation: heroGlowEnter 2.2s ease-out 0.8s forwards;
+}
+
+
+/* SCROLL */
+
+.hero-scroll {
+  opacity: 0;
+  animation: heroScrollEnter 1.4s ease-out 1.6s forwards;
+}
+
+
+/* ========================================
+   KEYFRAMES
+======================================== */
+
+@keyframes heroBadgeEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes heroTextEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes heroButtonsEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/*
+  IMPORTANT:
+  Is animation se outer image container ki
+  left/bottom positioning change nahi hogi.
+*/
+
+@keyframes heroImageEnter {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes heroGlowEnter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes heroScrollEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Scroll indicator animation */
+
+.scroll-dot {
+  animation: scrollDotMove 2s ease-in-out infinite;
+}
+
+@keyframes scrollDotMove {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(11px);
+  }
+}
+
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge,
+  .hero-heading,
+  .hero-description,
+  .hero-buttons,
+  .hero-person-image,
+  .hero-glow,
+  .hero-scroll {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+
+  .scroll-dot {
+    animation: none;
+  }
+}
