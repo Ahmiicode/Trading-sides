@@ -4,6 +4,7 @@ import Besttrading from "@/components/Besttrading";
 import Signal from "@/components/Signals";
 import ContactForm from "@/components/contact";
 import Social from "@/components/Social";
+import Footer from "@/components/Footer";
 
 export default function Page() {
   return (
@@ -14,6 +15,7 @@ export default function Page() {
       <Social/>
       <Besttrading/>
       <ContactForm/>
+      <Footer/>
     </main>
   );
 }
