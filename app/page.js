@@ -10,8 +10,9 @@ export default function Page() {
     
       <Hero />
       <Signal/>
-      <Giveaway/>
+      
       <Besttrading/>
+      <Giveaway/>
        <Social/>
      
     </main>
