@@ -11,8 +11,8 @@ export default function Page() {
       <Hero />
       <Signal/>
       <Giveaway/>
-      <Social/>
       <Besttrading/>
+       <Social/>
      
     </main>
   );

@@ -295,3 +295,12 @@ body {
     animation: none !important;
   }
 }
+/* Mobile page background fix */
+
+/* Mobile only: dark background after Hero */
+@media (max-width: 1023px) {
+  html,
+  body {
+    background: #080a0e !important;
+  }
+}

@@ -62,30 +62,26 @@ export default function AnimatedBackground() {
         ? settings.desktopParticleCount
         : settings.mobileParticleCount;
 
-      particles = Array.from(
-        { length: particleCount },
-        () => {
-          const speed =
-            settings.minSpeed +
-            Math.random() *
-              (settings.maxSpeed - settings.minSpeed);
+      particles = Array.from({ length: particleCount }, () => {
+        const speed =
+          settings.minSpeed +
+          Math.random() *
+            (settings.maxSpeed - settings.minSpeed);
 
-          const angle = Math.random() * Math.PI * 2;
+        const angle = Math.random() * Math.PI * 2;
 
-          return {
-            x: Math.random() * width,
-            y: Math.random() * height,
+        return {
+          x: Math.random() * width,
+          y: Math.random() * height,
 
-            vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
 
-            radius: Math.random() * 1.3 + 1,
+          radius: Math.random() * 1.3 + 1,
 
-            opacity:
-              Math.random() * 0.25 + 0.7,
-          };
-        }
-      );
+          opacity: Math.random() * 0.25 + 0.7,
+        };
+      });
     };
 
     const resizeCanvas = () => {
@@ -116,10 +112,8 @@ export default function AnimatedBackground() {
 
     const handleMouseMove = (event) => {
       /*
-        Desktop mouse effect.
-        Mobile touch par unnecessary interaction nahi.
+        Desktop mouse effect only.
       */
-
       if (!isDesktop()) return;
 
       mouse.x = event.clientX;
@@ -141,26 +135,20 @@ export default function AnimatedBackground() {
         /*
           Mouse Repel
         */
-
         if (mouse.active && isDesktop()) {
-          const dx =
-            particle.x - mouse.x;
-
-          const dy =
-            particle.y - mouse.y;
+          const dx = particle.x - mouse.x;
+          const dy = particle.y - mouse.y;
 
           const distance = Math.sqrt(
             dx * dx + dy * dy
           );
 
           if (
-            distance <
-              settings.mouseDistance &&
+            distance < settings.mouseDistance &&
             distance > 0
           ) {
             const force =
-              (settings.mouseDistance -
-                distance) /
+              (settings.mouseDistance - distance) /
               settings.mouseDistance;
 
             particle.x +=
@@ -178,7 +166,6 @@ export default function AnimatedBackground() {
         /*
           Screen wrapping
         */
-
         if (particle.x < -30) {
           particle.x = width + 30;
         }
@@ -198,16 +185,11 @@ export default function AnimatedBackground() {
     };
 
     const drawConnections = () => {
-      const connectionDistance =
-        isDesktop()
-          ? settings.connectionDistance
-          : settings.mobileConnectionDistance;
+      const connectionDistance = isDesktop()
+        ? settings.connectionDistance
+        : settings.mobileConnectionDistance;
 
-      for (
-        let i = 0;
-        i < particles.length;
-        i++
-      ) {
+      for (let i = 0; i < particles.length; i++) {
         for (
           let j = i + 1;
           j < particles.length;
@@ -216,20 +198,14 @@ export default function AnimatedBackground() {
           const first = particles[i];
           const second = particles[j];
 
-          const dx =
-            first.x - second.x;
-
-          const dy =
-            first.y - second.y;
+          const dx = first.x - second.x;
+          const dy = first.y - second.y;
 
           const distance = Math.sqrt(
             dx * dx + dy * dy
           );
 
-          if (
-            distance <
-            connectionDistance
-          ) {
+          if (distance < connectionDistance) {
             const strength =
               1 -
               distance /
@@ -247,10 +223,9 @@ export default function AnimatedBackground() {
               second.y
             );
 
-            ctx.strokeStyle =
-              `rgba(255, 195, 55, ${
-                strength * 0.28
-              })`;
+            ctx.strokeStyle = `rgba(255, 195, 55, ${
+              strength * 0.28
+            })`;
 
             ctx.lineWidth = 0.75;
 
@@ -261,54 +236,49 @@ export default function AnimatedBackground() {
     };
 
     const drawParticles = () => {
-      particles.forEach(
-        (particle) => {
-          /*
-            Outer glow
-          */
+      particles.forEach((particle) => {
+        /*
+          Outer glow
+        */
+        ctx.beginPath();
 
-          ctx.beginPath();
+        ctx.arc(
+          particle.x,
+          particle.y,
+          particle.radius + 2.5,
+          0,
+          Math.PI * 2
+        );
 
-          ctx.arc(
-            particle.x,
-            particle.y,
-            particle.radius + 2.5,
-            0,
-            Math.PI * 2
-          );
+        ctx.fillStyle =
+          "rgba(255, 187, 40, 0.08)";
 
-          ctx.fillStyle =
-            "rgba(255, 187, 40, 0.08)";
+        ctx.fill();
 
-          ctx.fill();
+        /*
+          Main particle
+        */
+        ctx.beginPath();
 
-          /*
-            Main particle
-          */
+        ctx.arc(
+          particle.x,
+          particle.y,
+          particle.radius,
+          0,
+          Math.PI * 2
+        );
 
-          ctx.beginPath();
+        ctx.fillStyle = `rgba(255, 199, 62, ${particle.opacity})`;
 
-          ctx.arc(
-            particle.x,
-            particle.y,
-            particle.radius,
-            0,
-            Math.PI * 2
-          );
+        ctx.shadowBlur = 12;
 
-          ctx.fillStyle =
-            `rgba(255, 199, 62, ${particle.opacity})`;
+        ctx.shadowColor =
+          "rgba(255, 187, 35, 0.9)";
 
-          ctx.shadowBlur = 12;
+        ctx.fill();
 
-          ctx.shadowColor =
-            "rgba(255, 187, 35, 0.9)";
-
-          ctx.fill();
-
-          ctx.shadowBlur = 0;
-        }
-      );
+        ctx.shadowBlur = 0;
+      });
     };
 
     const animate = () => {
@@ -326,23 +296,18 @@ export default function AnimatedBackground() {
       drawParticles();
 
       animationFrame =
-        requestAnimationFrame(
-          animate
-        );
+        requestAnimationFrame(animate);
     };
 
     /*
-      Start
+      START
     */
-
     resizeCanvas();
-
     animate();
 
     /*
-      Events
+      EVENTS
     */
-
     window.addEventListener(
       "resize",
       resizeCanvas
@@ -359,9 +324,8 @@ export default function AnimatedBackground() {
     );
 
     /*
-      Cleanup
+      CLEANUP
     */
-
     return () => {
       cancelAnimationFrame(
         animationFrame
@@ -387,21 +351,18 @@ export default function AnimatedBackground() {
   return (
     <div
       ref={wrapperRef}
-      className="pointer-events-none absolute left-0 top-0 -z-10 h-[100dvh] w-full overflow-hidden bg-[#080a0e] lg:fixed lg:inset-0 lg:h-screen"
+      className="pointer-events-none absolute left-0 top-0 z-0 h-[100dvh] w-full overflow-hidden bg-[#080a0e] lg:fixed lg:inset-0 lg:h-screen"
     >
       {/* GOLD AMBIENT GLOW */}
-
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,190,45,0.045),transparent_55%)]" />
 
       {/* PARTICLES */}
-
       <canvas
         ref={canvasRef}
         className="absolute left-0 top-0 h-full w-full"
       />
 
       {/* DARK VIGNETTE */}
-
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(3,4,6,0.20)_100%)]" />
     </div>
   );

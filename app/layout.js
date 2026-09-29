@@ -27,27 +27,22 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full">
-
-        {/* GLOBAL BACKGROUND */}
+      <body className="min-h-full bg-[#07090d] lg:bg-transparent">
+        
         <AnimatedBackground />
 
-        {/* GLOBAL NAVBAR */}
         <div className="relative z-50">
           <Navbar />
         </div>
 
-        {/* WEBSITE CONTENT */}
         <main className="relative z-10 min-h-screen">
           {children}
         </main>
 
-        {/* GLOBAL FOOTER */}
         <div className="relative z-10">
           <Footer />
         </div>
 
-        {/* GLOBAL WHATSAPP BUTTON */}
         <WhatsApp />
 
       </body>
