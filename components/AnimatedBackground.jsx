@@ -4,16 +4,22 @@ import { useEffect, useRef } from "react";
 
 export default function AnimatedBackground() {
   const canvasRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const wrapper = wrapperRef.current;
+
+    if (!canvas || !wrapper) return;
 
     const ctx = canvas.getContext("2d");
+
     if (!ctx) return;
 
     let animationFrame;
     let particles = [];
+    let width = 0;
+    let height = 0;
 
     const mouse = {
       x: -1000,
@@ -22,56 +28,68 @@ export default function AnimatedBackground() {
     };
 
     const settings = {
-      particleCount: 95,
-
-      // Distance between particles for normal lines
+      desktopParticleCount: 95,
+      mobileParticleCount: 55,
       connectionDistance: 165,
-
-      // Cursor influence area
+      mobileConnectionDistance: 135,
       mouseDistance: 180,
-
-      // Faster floating
       minSpeed: 0.22,
       maxSpeed: 0.55,
-
-      // How strongly cursor pushes particles away
       repelStrength: 1.8,
     };
 
+    const isDesktop = () => {
+      return window.innerWidth >= 1024;
+    };
+
+    const getCanvasSize = () => {
+      width = window.innerWidth;
+
+      /*
+        Desktop:
+        Full viewport because background is fixed.
+
+        Mobile:
+        Only first viewport / Hero area.
+      */
+      height = window.innerHeight;
+    };
+
     const createParticles = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      const desktop = isDesktop();
 
-      const count = Math.min(
-        settings.particleCount,
-        Math.max(55, Math.floor(width / 16))
+      const particleCount = desktop
+        ? settings.desktopParticleCount
+        : settings.mobileParticleCount;
+
+      particles = Array.from(
+        { length: particleCount },
+        () => {
+          const speed =
+            settings.minSpeed +
+            Math.random() *
+              (settings.maxSpeed - settings.minSpeed);
+
+          const angle = Math.random() * Math.PI * 2;
+
+          return {
+            x: Math.random() * width,
+            y: Math.random() * height,
+
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+
+            radius: Math.random() * 1.3 + 1,
+
+            opacity:
+              Math.random() * 0.25 + 0.7,
+          };
+        }
       );
-
-      particles = Array.from({ length: count }, () => {
-        const speed =
-          settings.minSpeed +
-          Math.random() *
-            (settings.maxSpeed - settings.minSpeed);
-
-        const angle = Math.random() * Math.PI * 2;
-
-        return {
-          x: Math.random() * width,
-          y: Math.random() * height,
-
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-
-          radius: Math.random() * 1.3 + 1,
-
-          opacity: Math.random() * 0.25 + 0.7,
-        };
-      });
     };
 
     const resizeCanvas = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      getCanvasSize();
 
       const dpr = Math.min(
         window.devicePixelRatio || 1,
@@ -97,6 +115,13 @@ export default function AnimatedBackground() {
     };
 
     const handleMouseMove = (event) => {
+      /*
+        Desktop mouse effect.
+        Mobile touch par unnecessary interaction nahi.
+      */
+
+      if (!isDesktop()) return;
+
       mouse.x = event.clientX;
       mouse.y = event.clientY;
       mouse.active = true;
@@ -109,41 +134,34 @@ export default function AnimatedBackground() {
     };
 
     const updateParticles = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-
       particles.forEach((particle) => {
-        // Normal continuous movement
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-        // =========================
-        // CURSOR REPEL EFFECT
-        // =========================
+        /*
+          Mouse Repel
+        */
 
-        if (mouse.active) {
-          const dx = particle.x - mouse.x;
-          const dy = particle.y - mouse.y;
+        if (mouse.active && isDesktop()) {
+          const dx =
+            particle.x - mouse.x;
+
+          const dy =
+            particle.y - mouse.y;
 
           const distance = Math.sqrt(
             dx * dx + dy * dy
           );
 
           if (
-            distance < settings.mouseDistance &&
+            distance <
+              settings.mouseDistance &&
             distance > 0
           ) {
             const force =
-              (settings.mouseDistance - distance) /
+              (settings.mouseDistance -
+                distance) /
               settings.mouseDistance;
-
-            /*
-              Notice:
-              dx = particle - mouse
-
-              Isliye particle cursor se
-              DOOR move karega.
-            */
 
             particle.x +=
               (dx / distance) *
@@ -157,7 +175,9 @@ export default function AnimatedBackground() {
           }
         }
 
-        // Wrap around screen
+        /*
+          Screen wrapping
+        */
 
         if (particle.x < -30) {
           particle.x = width + 30;
@@ -178,6 +198,11 @@ export default function AnimatedBackground() {
     };
 
     const drawConnections = () => {
+      const connectionDistance =
+        isDesktop()
+          ? settings.connectionDistance
+          : settings.mobileConnectionDistance;
+
       for (
         let i = 0;
         i < particles.length;
@@ -203,12 +228,12 @@ export default function AnimatedBackground() {
 
           if (
             distance <
-            settings.connectionDistance
+            connectionDistance
           ) {
             const strength =
               1 -
               distance /
-                settings.connectionDistance;
+                connectionDistance;
 
             ctx.beginPath();
 
@@ -222,13 +247,10 @@ export default function AnimatedBackground() {
               second.y
             );
 
-            // BRIGHTER GOLD LINES
-            ctx.strokeStyle = `rgba(
-              255,
-              195,
-              55,
-              ${strength * 0.28}
-            )`;
+            ctx.strokeStyle =
+              `rgba(255, 195, 55, ${
+                strength * 0.28
+              })`;
 
             ctx.lineWidth = 0.75;
 
@@ -239,76 +261,87 @@ export default function AnimatedBackground() {
     };
 
     const drawParticles = () => {
-      particles.forEach((particle) => {
-        /*
-          Outer glow
-        */
+      particles.forEach(
+        (particle) => {
+          /*
+            Outer glow
+          */
 
-        ctx.beginPath();
+          ctx.beginPath();
 
-        ctx.arc(
-          particle.x,
-          particle.y,
-          particle.radius + 2.5,
-          0,
-          Math.PI * 2
-        );
+          ctx.arc(
+            particle.x,
+            particle.y,
+            particle.radius + 2.5,
+            0,
+            Math.PI * 2
+          );
 
-        ctx.fillStyle =
-          "rgba(255, 187, 40, 0.08)";
+          ctx.fillStyle =
+            "rgba(255, 187, 40, 0.08)";
 
-        ctx.fill();
+          ctx.fill();
 
-        /*
-          Main bright particle
-        */
+          /*
+            Main particle
+          */
 
-        ctx.beginPath();
+          ctx.beginPath();
 
-        ctx.arc(
-          particle.x,
-          particle.y,
-          particle.radius,
-          0,
-          Math.PI * 2
-        );
+          ctx.arc(
+            particle.x,
+            particle.y,
+            particle.radius,
+            0,
+            Math.PI * 2
+          );
 
-        ctx.fillStyle = `rgba(
-          255,
-          199,
-          62,
-          ${particle.opacity}
-        )`;
+          ctx.fillStyle =
+            `rgba(255, 199, 62, ${particle.opacity})`;
 
-        ctx.shadowBlur = 12;
+          ctx.shadowBlur = 12;
 
-        ctx.shadowColor =
-          "rgba(255, 187, 35, 0.9)";
+          ctx.shadowColor =
+            "rgba(255, 187, 35, 0.9)";
 
-        ctx.fill();
+          ctx.fill();
 
-        ctx.shadowBlur = 0;
-      });
+          ctx.shadowBlur = 0;
+        }
+      );
     };
 
     const animate = () => {
       ctx.clearRect(
         0,
         0,
-        window.innerWidth,
-        window.innerHeight
+        width,
+        height
       );
 
       updateParticles();
+
       drawConnections();
+
       drawParticles();
 
       animationFrame =
-        requestAnimationFrame(animate);
+        requestAnimationFrame(
+          animate
+        );
     };
 
+    /*
+      Start
+    */
+
     resizeCanvas();
+
     animate();
+
+    /*
+      Events
+    */
 
     window.addEventListener(
       "resize",
@@ -324,6 +357,10 @@ export default function AnimatedBackground() {
       "mouseleave",
       handleMouseLeave
     );
+
+    /*
+      Cleanup
+    */
 
     return () => {
       cancelAnimationFrame(
@@ -348,13 +385,22 @@ export default function AnimatedBackground() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#080a0e]">
+    <div
+      ref={wrapperRef}
+      className="pointer-events-none absolute left-0 top-0 -z-10 h-[100dvh] w-full overflow-hidden bg-[#080a0e] lg:fixed lg:inset-0 lg:h-screen"
+    >
+      {/* GOLD AMBIENT GLOW */}
+
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,190,45,0.045),transparent_55%)]" />
+
+      {/* PARTICLES */}
 
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 h-full w-full"
+        className="absolute left-0 top-0 h-full w-full"
       />
+
+      {/* DARK VIGNETTE */}
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(3,4,6,0.20)_100%)]" />
     </div>

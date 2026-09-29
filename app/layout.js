@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import AnimatedBackground from "@/components/AnimatedBackground";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import WhatsApp from "@/components/WhatsApp";
 
 const geistSans = Geist({
@@ -15,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Traders Paradise",
+  title: "Trading Sides",
   description: "Where Precision Meets Performance",
 };
 
@@ -27,15 +29,25 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full">
 
-        {/* Global Background */}
+        {/* GLOBAL BACKGROUND */}
         <AnimatedBackground />
 
-        {/* Website */}
+        {/* GLOBAL NAVBAR */}
+        <div className="relative z-50">
+          <Navbar />
+        </div>
+
+        {/* WEBSITE CONTENT */}
         <main className="relative z-10 min-h-screen">
           {children}
         </main>
 
-        {/* Global WhatsApp Button */}
+        {/* GLOBAL FOOTER */}
+        <div className="relative z-10">
+          <Footer />
+        </div>
+
+        {/* GLOBAL WHATSAPP BUTTON */}
         <WhatsApp />
 
       </body>

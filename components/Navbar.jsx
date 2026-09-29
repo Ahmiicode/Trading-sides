@@ -21,6 +21,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full">
+
       {/* NAVBAR BACKGROUND */}
       <div className="border-b border-white/[0.04] bg-[#090b0f]/75 backdrop-blur-xl lg:border-none lg:bg-transparent lg:backdrop-blur-none">
         <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-4 sm:h-[78px] sm:px-6 lg:h-[90px] lg:px-12">
@@ -53,6 +54,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={closeMenu}
                 className="rounded-full px-5 py-[9px] text-[13px] font-medium text-[#b5bac4] transition duration-300 hover:bg-white/[0.04] hover:text-white"
               >
                 {item.name}
@@ -63,9 +65,9 @@ export default function Navbar() {
           {/* RIGHT SIDE */}
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
 
-            {/* CONTACT */}
+            {/* DESKTOP / TOP CONTACT */}
             <Link
-              href="/#contact"
+              href="/contact"
               onClick={closeMenu}
               className="rounded-full bg-[#f4c44e] px-4 py-[10px] text-[12px] font-semibold text-[#101114] shadow-[0_5px_25px_rgba(244,196,78,0.15)] transition-[background-color,box-shadow] duration-300 hover:bg-[#ffd363] hover:shadow-[0_0_28px_rgba(244,196,78,0.28)] sm:px-6 sm:py-[11px] sm:text-[13px] lg:px-7 lg:py-[12px]"
             >
@@ -81,31 +83,28 @@ export default function Navbar() {
               className="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-[#7c642e]/60 bg-[#111318]/90 transition-[border-color,box-shadow] duration-300 hover:border-[#f4c44e]/70 hover:shadow-[0_0_20px_rgba(244,196,78,0.12)] lg:hidden"
             >
               <div className="relative h-[16px] w-[19px]">
+
                 <span
                   className={`absolute left-0 top-0 h-[1.5px] w-full rounded-full bg-[#f4c44e] transition-all duration-300 ${
-                    menuOpen
-                      ? "top-[7px] rotate-45"
-                      : ""
+                    menuOpen ? "top-[7px] rotate-45" : ""
                   }`}
                 />
 
                 <span
                   className={`absolute left-0 top-[7px] h-[1.5px] w-full rounded-full bg-[#f4c44e] transition-all duration-300 ${
-                    menuOpen
-                      ? "scale-x-0 opacity-0"
-                      : ""
+                    menuOpen ? "scale-x-0 opacity-0" : ""
                   }`}
                 />
 
                 <span
                   className={`absolute bottom-0 left-0 h-[1.5px] w-full rounded-full bg-[#f4c44e] transition-all duration-300 ${
-                    menuOpen
-                      ? "bottom-[7px] -rotate-45"
-                      : ""
+                    menuOpen ? "bottom-[7px] -rotate-45" : ""
                   }`}
                 />
+
               </div>
             </button>
+
           </div>
         </div>
       </div>
@@ -142,18 +141,20 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* BOTTOM CONTACT */}
+          {/* MOBILE CONTACT */}
           <div className="mt-2 border-t border-white/[0.05] p-2">
             <Link
-              href="/#contact"
+              href="/contact"
               onClick={closeMenu}
               className="block w-full rounded-[13px] bg-[#f4c44e] py-[13px] text-center text-[13px] font-semibold text-[#101114] shadow-[0_6px_25px_rgba(244,196,78,0.14)] transition-[background-color,box-shadow] duration-300 hover:bg-[#ffd363] hover:shadow-[0_0_25px_rgba(244,196,78,0.22)]"
             >
               Contact Us
             </Link>
           </div>
+
         </div>
       </div>
+
     </header>
   );
 }

@@ -1,54 +1,76 @@
 import Link from "next/link";
 
+const TelegramIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    className="h-[17px] w-[17px] fill-current"
+  >
+    <path d="M21.8 3.2 18.6 20c-.2 1.2-.9 1.5-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.8l-4.8-1.5c-1-.3-1-1 .2-1.5L20.4 3c.9-.3 1.7.2 1.4.2Z" />
+  </svg>
+);
+
 const WhatsAppIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-[17px] w-[17px] fill-none stroke-current" strokeWidth="1.8">
-    <path d="M20 11.5a8 8 0 0 1-11.8 7L4 19.5l1.1-4A8 8 0 1 1 20 11.5Z" />
-    <path d="M9 8.5c.4 2.3 2.2 4.1 4.5 4.8" />
+  <svg
+    viewBox="0 0 24 24"
+    className="h-[17px] w-[17px] fill-current"
+  >
+    <path d="M12 2a9.7 9.7 0 0 0-8.4 14.6L2 22l5.6-1.5A9.8 9.8 0 1 0 12 2Zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3.3.9.9-3.2-.2-.3A8 8 0 1 1 12 19.7Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-2.9-.2-.3.2-.3.7-1.1.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7 1-.1 1.4-.7 1.6-1.3.2-.6.2-1.1.1-1.3-.1-.2-.2-.2-.4-.3Z" />
   </svg>
 );
 
 const YoutubeIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-[17px] w-[17px] fill-none stroke-current" strokeWidth="1.8">
-    <rect x="3" y="6" width="18" height="12" rx="4" />
-    <path d="m10 9 5 3-5 3Z" />
+  <svg
+    viewBox="0 0 24 24"
+    className="h-[17px] w-[17px] fill-current"
+  >
+    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
   </svg>
-);
-
-const XIcon = () => (
-  <span className="text-[15px] font-medium leading-none">𝕏</span>
 );
 
 const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-[17px] w-[17px] fill-none stroke-current" strokeWidth="1.8">
+  <svg
+    viewBox="0 0 24 24"
+    className="h-[17px] w-[17px] fill-none stroke-current"
+    strokeWidth="1.8"
+  >
     <rect x="3" y="3" width="18" height="18" rx="5" />
     <circle cx="12" cy="12" r="4" />
-    <circle cx="17.5" cy="6.5" r="1" className="fill-current stroke-none" />
-  </svg>
-);
-
-const LinkedinIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-[17px] w-[17px] fill-none stroke-current" strokeWidth="1.8">
-    <rect x="4" y="9" width="4" height="11" />
-    <path d="M6 4.5v.01" strokeWidth="3" strokeLinecap="round" />
-    <path d="M12 20V9h4v1.8c.8-1.2 2-2 3.7-2 2.5 0 3.3 1.7 3.3 4.4V20h-4v-6c0-1.4-.4-2.3-1.6-2.3-1.4 0-1.8 1-1.8 2.7V20Z" />
+    <circle
+      cx="17.5"
+      cy="6.5"
+      r="1"
+      className="fill-current stroke-none"
+    />
   </svg>
 );
 
 const MailIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-none stroke-current" strokeWidth="1.8">
+  <svg
+    viewBox="0 0 24 24"
+    className="h-[18px] w-[18px] fill-none stroke-current"
+    strokeWidth="1.8"
+  >
     <rect x="3" y="5" width="18" height="14" rx="2" />
     <path d="m4 7 8 6 8-6" />
   </svg>
 );
 
 const PhoneIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-none stroke-current" strokeWidth="1.8">
+  <svg
+    viewBox="0 0 24 24"
+    className="h-[18px] w-[18px] fill-none stroke-current"
+    strokeWidth="1.8"
+  >
     <path d="M5 4h4l2 5-2.5 1.5a15 15 0 0 0 5 5L15 13l5 2v4c0 1.1-.9 2-2 2C9.7 21 3 14.3 3 6c0-1.1.9-2 2-2Z" />
   </svg>
 );
 
 const LocationIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-none stroke-current" strokeWidth="1.8">
+  <svg
+    viewBox="0 0 24 24"
+    className="h-[18px] w-[18px] fill-none stroke-current"
+    strokeWidth="1.8"
+  >
     <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
     <circle cx="12" cy="10" r="2.5" />
   </svg>
@@ -56,29 +78,24 @@ const LocationIcon = () => (
 
 const socialLinks = [
   {
+    name: "Telegram",
+    href: "https://t.me/Tradingsidesofficial",
+    Icon: TelegramIcon,
+  },
+  {
     name: "WhatsApp",
-    href: "https://wa.me/923030703449",
+    href: "https://whatsapp.com/channel/0029Vb8mpn16LwHixN2tza0L",
     Icon: WhatsAppIcon,
   },
   {
     name: "YouTube",
-    href: "https://youtube.com/",
+    href: "https://youtube.com/@tradingsides?si=O0Io1nwB_ie02jED",
     Icon: YoutubeIcon,
   },
   {
-    name: "X",
-    href: "https://x.com/",
-    Icon: XIcon,
-  },
-  {
     name: "Instagram",
-    href: "https://instagram.com/",
+    href: "https://www.instagram.com/tradingsides?stkn=ZTJ6dHhvODdoZjJq",
     Icon: InstagramIcon,
-  },
-  {
-    name: "LinkedIn",
-    href: "https://linkedin.com/",
-    Icon: LinkedinIcon,
   },
 ];
 
@@ -107,7 +124,8 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={name}
-                className="flex h-[40px] w-[40px] items-center justify-center rounded-[10px] border border-[#8a6a1d]/70 bg-[#0b0d11]/70 text-white transition-[border-color,box-shadow] duration-300 hover:border-[#f4c44e] hover:shadow-[0_0_22px_rgba(244,196,78,0.16)]"
+                title={name}
+                className="flex h-[40px] w-[40px] items-center justify-center rounded-[10px] border border-[#8a6a1d]/70 bg-[#0b0d11]/70 text-white transition-[border-color,box-shadow,color] duration-300 hover:border-[#f4c44e] hover:text-[#f4c44e] hover:shadow-[0_0_22px_rgba(244,196,78,0.16)]"
               >
                 <Icon />
               </a>
@@ -145,6 +163,20 @@ export default function Footer() {
               >
                 Social
               </Link>
+
+              <Link
+                href="/giveaway"
+                className="text-[14px] text-[#e1e3e7] transition-colors duration-300 hover:text-[#f4c44e]"
+              >
+                Giveaway
+              </Link>
+
+              <Link
+                href="/contact"
+                className="text-[14px] text-[#e1e3e7] transition-colors duration-300 hover:text-[#f4c44e]"
+              >
+                Contact
+              </Link>
             </div>
           </div>
 
@@ -179,7 +211,7 @@ export default function Footer() {
                   <PhoneIcon />
                 </span>
 
-                <span>+92 303 0703449</span>
+                <span>+92 303 565656</span>
               </a>
 
               {/* LOCATION */}

@@ -19,11 +19,18 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
+
+
 /* ========================================
    HERO - SLOW PREMIUM LOAD ANIMATION
 ======================================== */
@@ -48,24 +55,15 @@ body {
   animation: heroButtonsEnter 1.5s ease-out 0.95s forwards;
 }
 
-
-/* IMAGE */
-
 .hero-person-image {
   opacity: 0;
   animation: heroImageEnter 2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
 }
 
-
-/* GOLD GLOW */
-
 .hero-glow {
   opacity: 0;
   animation: heroGlowEnter 2.2s ease-out 0.8s forwards;
 }
-
-
-/* SCROLL */
 
 .hero-scroll {
   opacity: 0;
@@ -116,12 +114,6 @@ body {
 }
 
 
-/*
-  IMPORTANT:
-  Is animation se outer image container ki
-  left/bottom positioning change nahi hogi.
-*/
-
 @keyframes heroImageEnter {
   from {
     opacity: 0;
@@ -159,7 +151,9 @@ body {
 }
 
 
-/* Scroll indicator animation */
+/* ========================================
+   SCROLL INDICATOR
+======================================== */
 
 .scroll-dot {
   animation: scrollDotMove 2s ease-in-out infinite;
@@ -186,9 +180,71 @@ body {
 }
 
 
-/* Reduced Motion */
+/* ========================================
+   MOBILE
+   ONLY HERO ANIMATION
+======================================== */
+
+@media (max-width: 767px) {
+
+  /*
+    Hero animation mobile par ON rahegi.
+    Neeche ke sections par agar future mein
+    animation classes add hon to disable ho jayengi.
+  */
+
+  #services,
+  #platforms,
+  #social,
+  #contact,
+  footer {
+    animation: none !important;
+  }
+
+  #services *,
+  #platforms *,
+  #social *,
+  #contact *,
+  footer * {
+    animation: none !important;
+    transition-duration: 300ms;
+  }
+
+
+  /* Mobile Hero animation slightly softer */
+
+  .hero-badge {
+    animation-duration: 1.2s;
+  }
+
+  .hero-heading {
+    animation-duration: 1.4s;
+  }
+
+  .hero-description {
+    animation-duration: 1.4s;
+  }
+
+  .hero-buttons {
+    animation-duration: 1.3s;
+  }
+
+  .hero-person-image {
+    animation-duration: 1.8s;
+  }
+
+  .hero-glow {
+    animation-duration: 2s;
+  }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
   .hero-badge,
   .hero-heading,
   .hero-description,
@@ -203,5 +259,39 @@ body {
 
   .scroll-dot {
     animation: none;
+  }
+}
+/* ========================================
+   MOBILE - ONLY HERO ANIMATION
+======================================== */
+
+@media (max-width: 767px) {
+
+  /* Hero animation ON rahegi */
+  #home .hero-badge,
+  #home .hero-heading,
+  #home .hero-description,
+  #home .hero-buttons,
+  #home .hero-person-image,
+  #home .hero-glow {
+    animation-play-state: running;
+  }
+
+  /* Hero ke baad sab animations OFF */
+  #platforms *,
+  #services *,
+  #social *,
+  #contact *,
+  footer * {
+    animation: none !important;
+  }
+
+  /* Agar section ke main element par animation lagi ho */
+  #platforms,
+  #services,
+  #social,
+  #contact,
+  footer {
+    animation: none !important;
   }
 }
