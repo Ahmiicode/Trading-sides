@@ -20,22 +20,16 @@ export default function Hero() {
               LIVE
             </span>
 
-            <span className="text-[11px] sm:text-sm">
-              
-            </span>
-
             <span className="whitespace-nowrap text-[10px] font-semibold text-[#e6eaf0] sm:text-sm">
               giveaways live now
             </span>
 
-            {/* GIVEAWAY PAGE - MOBILE + DESKTOP */}
             <Link
               href="/giveaway"
               className="shrink-0 whitespace-nowrap text-[9px] font-semibold text-[#3895ff] transition-colors duration-300 hover:text-[#67adff] sm:text-[13px]"
             >
               See Details →
             </Link>
-
           </div>
 
           {/* HEADING */}
@@ -54,21 +48,21 @@ export default function Hero() {
           {/* BUTTONS */}
           <div className="hero-buttons mt-7 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
 
-            {/* JOIN US -> SERVICES */}
-            <Link
+            {/* JOIN US */}
+            <a
               href="#services"
               className="rounded-full bg-[#f5c84c] px-7 py-[12px] text-[13px] font-semibold text-[#111318] shadow-[0_8px_30px_rgba(245,200,76,0.18)] transition duration-300 hover:bg-[#ffd662] hover:shadow-[0_0_30px_rgba(245,200,76,0.25)] sm:px-9 sm:py-[14px] sm:text-[15px]"
             >
               Join Us
-            </Link>
+            </a>
 
-            {/* LEARN MORE -> SERVICES */}
-            <Link
+            {/* LEARN MORE */}
+            <a
               href="#services"
               className="rounded-full border border-white/[0.08] bg-[#17191e]/80 px-7 py-[12px] text-[13px] font-semibold text-white backdrop-blur-md transition duration-300 hover:border-[#f5c84c]/30 hover:bg-[#202329] sm:px-9 sm:py-[14px] sm:text-[15px]"
             >
               Learn More
-            </Link>
+            </a>
 
           </div>
         </div>
@@ -81,8 +75,6 @@ export default function Hero() {
 
           {/* IMAGE POSITION */}
           <div className="absolute bottom-0 left-1/2 h-full w-full -translate-x-1/2 lg:h-[95%]">
-
-            {/* IMAGE ANIMATION ONLY */}
             <div className="hero-person-image relative h-full w-full">
               <Image
                 src="/image/hero-person.png"
@@ -93,7 +85,6 @@ export default function Hero() {
                 className="object-contain object-bottom"
               />
             </div>
-
           </div>
         </div>
 
