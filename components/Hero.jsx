@@ -21,11 +21,11 @@ export default function Hero() {
             </span>
 
             <span className="text-[11px] sm:text-sm">
-              🎁
+              
             </span>
 
             <span className="whitespace-nowrap text-[10px] font-semibold text-[#e6eaf0] sm:text-sm">
-              2 giveaways live now
+              giveaways live now
             </span>
 
             {/* GIVEAWAY PAGE - MOBILE + DESKTOP */}
