@@ -140,10 +140,10 @@ const privacySections = [
 
         <p className="mt-2">
           If you are logged into your account, we may track your interactions
-          with our products and services. For example, we record which courses,
-          products, or affiliate links you click on. This helps us understand
-          what content is most valuable to our users. This data includes your
-          User ID, the item you clicked, and a timestamp.
+          with our products and services. For example, we record which
+          courses, products, or affiliate links you click on. This helps us
+          understand what content is most valuable to our users. This data
+          includes your User ID, the item you clicked, and a timestamp.
         </p>
 
         <p className="mt-4 font-semibold text-white">
@@ -321,8 +321,8 @@ const termsSections = [
         The Service and its original content, features, and functionality are
         and will remain the exclusive property of Trading Sides. The Trading
         Sides View Indicator, our courses, and all associated materials are
-        protected by copyright and other intellectual property laws. You may
-        not distribute, modify, transmit, reuse, download, repost, copy, or use
+        protected by copyright and other intellectual property laws. You may not
+        distribute, modify, transmit, reuse, download, repost, copy, or use
         said materials, whether in whole or in part, for commercial purposes or
         for personal gain, without express advance written permission from us.
       </p>
@@ -479,7 +479,6 @@ export default function Footer() {
               </h3>
 
               <div className="mt-5 flex flex-col items-start gap-4">
-
                 <Link
                   href="/#services"
                   className="text-[14px] text-[#e1e3e7] transition-colors duration-300 hover:text-[#f4c44e]"
@@ -514,7 +513,6 @@ export default function Footer() {
                 >
                   Contact
                 </Link>
-
               </div>
             </div>
 
@@ -615,7 +613,6 @@ export default function Footer() {
 
             {/* MODAL HEADER */}
             <div className="flex shrink-0 items-center justify-between border-b border-white/[0.07] px-5 py-5 sm:px-7">
-
               <h2 className="text-[19px] font-bold text-white sm:text-[23px]">
                 {modal === "privacy"
                   ? "Privacy Policy"
@@ -630,13 +627,10 @@ export default function Footer() {
               >
                 <CloseIcon />
               </button>
-
             </div>
 
             {/* MODAL CONTENT */}
-            <div
-              className="scrollbar-gold overflow-y-auto px-5 py-6 text-[12px] leading-6 text-[#aeb4be] sm:px-7 sm:py-7 sm:text-[13px] sm:leading-7"
-            >
+            <div className="scrollbar-gold overflow-y-auto px-5 py-6 text-[12px] leading-6 text-[#aeb4be] sm:px-7 sm:py-7 sm:text-[13px] sm:leading-7">
               {modal === "privacy" ? (
                 <>
                   <p className="mb-7">
@@ -699,7 +693,6 @@ export default function Footer() {
 
             {/* MODAL FOOTER */}
             <div className="flex shrink-0 justify-end border-t border-white/[0.07] px-5 py-4 sm:px-7">
-
               <button
                 type="button"
                 onClick={closeModal}
@@ -707,42 +700,11 @@ export default function Footer() {
               >
                 Close
               </button>
-
             </div>
+
           </div>
         </div>
       )}
-
-      {/* GOLD SCROLLBAR */}
-      <style jsx>{`
-        .scrollbar-gold {
-          scrollbar-width: thin;
-          scrollbar-color: #c9a33a #111318;
-        }
-
-        .scrollbar-gold::-webkit-scrollbar {
-          width: 7px;
-        }
-
-        .scrollbar-gold::-webkit-scrollbar-track {
-          background: #111318;
-          border-radius: 10px;
-        }
-
-        .scrollbar-gold::-webkit-scrollbar-thumb {
-          background: linear-gradient(
-            180deg,
-            #f4c44e,
-            #b88924
-          );
-          border-radius: 10px;
-          border: 1px solid #17191e;
-        }
-
-        .scrollbar-gold::-webkit-scrollbar-thumb:hover {
-          background: #f4c44e;
-        }
-      `}</style>
     </>
   );
 }

@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 
 const traderWavesLink = "https://traderwaves.com/?code=D9AA93E4";
@@ -140,11 +141,11 @@ export default function TradingJournalPage() {
                   {feature.icon}
                 </div>
 
-                <h3 className="text-[9px] font-bold text-white sm:text-[14px]">
+                <h3 className="text-[9px] font-bold leading-[1.3] text-white sm:text-[14px]">
                   {feature.title}
                 </h3>
 
-                <p className="mt-1.5 text-[7px] leading-4 text-[#9299a6] sm:mt-2 sm:text-[12px] sm:leading-5">
+                <p className="mt-1.5 text-[7px] leading-[1.45] text-[#9299a6] sm:mt-2 sm:text-[12px] sm:leading-5">
                   {feature.description}
                 </p>
               </div>
@@ -154,9 +155,9 @@ export default function TradingJournalPage() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="relative px-5 py-14 sm:px-6 sm:py-20 lg:px-12 lg:py-24">
+      <section className="relative px-5 py-12 sm:px-6 sm:py-20 lg:px-12 lg:py-24">
         <div className="mx-auto max-w-[950px]">
-          <div className="mb-10 text-center sm:mb-16">
+          <div className="mb-8 text-center sm:mb-16">
             <h2 className="text-[27px] font-bold tracking-[-0.8px] text-white sm:text-[34px]">
               How It Works
             </h2>
@@ -166,35 +167,36 @@ export default function TradingJournalPage() {
             </p>
           </div>
 
-          <div className="relative grid grid-cols-3 gap-2 sm:grid-cols-3 sm:gap-6">
+          {/* MOBILE = 3 STEPS IN ONE ROW */}
+          <div className="relative grid grid-cols-3 gap-2 sm:gap-6">
             <div className="absolute left-[16%] right-[16%] top-5 h-px bg-gradient-to-r from-transparent via-[#925cff]/40 to-transparent" />
 
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="relative z-10 text-center"
+                className="relative z-10 min-w-0 text-center"
               >
                 <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#a267ff] to-[#7431dc] text-[12px] font-bold text-white shadow-[0_0_20px_rgba(139,80,255,0.25)]">
                   {step.number}
                 </div>
 
-                <h3 className="mt-4 text-[9px] font-bold text-white sm:mt-5 sm:text-[14px]">
+                <h3 className="mt-4 break-words text-[9px] font-bold leading-[1.3] text-white sm:mt-5 sm:text-[14px]">
                   {step.title}
                 </h3>
 
-                <p className="mx-auto mt-1 max-w-[220px] text-[7px] leading-4 text-[#8d95a2] sm:mt-2 sm:text-[12px] sm:leading-5">
+                <p className="mx-auto mt-1.5 max-w-[220px] break-words text-[7px] leading-[1.5] text-[#8d95a2] sm:mt-2 sm:text-[12px] sm:leading-5">
                   {step.description}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 text-center sm:mt-12">
+          <div className="mt-8 text-center sm:mt-12">
             <a
               href={traderWavesLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#a66dff] transition-colors duration-300 hover:text-[#c19aff] sm:text-[13px]"
+              className="inline-flex items-center gap-2 text-[11px] font-semibold text-[#a66dff] transition-colors duration-300 hover:text-[#c19aff] sm:text-[13px]"
             >
               Start on TraderWaves
               <span>→</span>
@@ -206,7 +208,7 @@ export default function TradingJournalPage() {
       {/* PRICING */}
       <section className="relative px-5 pb-8 pt-8 sm:px-6 sm:py-20 lg:px-12 lg:py-24">
         <div className="mx-auto max-w-[900px]">
-          <div className="mb-9 text-center sm:mb-12">
+          <div className="mb-8 text-center sm:mb-12">
             <h2 className="text-[27px] font-bold tracking-[-0.8px] text-white sm:text-[34px]">
               Pricing
             </h2>
@@ -217,14 +219,15 @@ export default function TradingJournalPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-5">
+          {/* MOBILE = 2 BOXES IN ONE ROW */}
+          <div className="grid grid-cols-2 gap-2 sm:gap-5">
             {/* GET STARTED FREE */}
-            <div className="flex min-h-[190px] flex-col rounded-[12px] border border-[#7546a7]/50 bg-[#0d0b14]/80 p-3 text-center shadow-[0_0_25px_rgba(139,80,255,0.06)] transition-all duration-300 hover:border-[#925cff]/80 hover:shadow-[0_0_30px_rgba(139,80,255,0.15)] sm:min-h-[230px] sm:p-7">
-              <h3 className="text-[16px] font-bold text-white sm:text-[20px]">
+            <div className="flex min-h-[215px] flex-col rounded-[12px] border border-[#7546a7]/50 bg-[#0d0b14]/80 p-3 text-center shadow-[0_0_25px_rgba(139,80,255,0.06)] transition-all duration-300 hover:border-[#925cff]/80 hover:shadow-[0_0_30px_rgba(139,80,255,0.15)] sm:min-h-[230px] sm:p-7">
+              <h3 className="text-[12px] font-bold text-white sm:text-[20px]">
                 Get Started Free
               </h3>
 
-              <p className="mt-2 text-[11px] leading-5 text-[#9299a6] sm:mt-3 sm:text-[13px]">
+              <p className="mt-2 text-[8px] leading-[1.5] text-[#9299a6] sm:mt-3 sm:text-[13px] sm:leading-5">
                 Start your trading journal and explore the tools available on
                 TraderWaves.
               </p>
@@ -234,7 +237,7 @@ export default function TradingJournalPage() {
                   href={traderWavesLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-[50px] w-full items-center justify-center rounded-[8px] bg-gradient-to-r from-[#9254ff] to-[#7b36e8] px-4 py-3 text-[11px] font-bold text-white shadow-[0_8px_25px_rgba(139,80,255,0.18)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(139,80,255,0.30)] sm:min-h-[46px] sm:px-6 sm:text-[13px]"
+                  className="inline-flex min-h-[50px] w-full items-center justify-center rounded-[8px] bg-gradient-to-r from-[#9254ff] to-[#7b36e8] px-3 py-3 text-[9px] font-bold text-white shadow-[0_8px_25px_rgba(139,80,255,0.22)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(139,80,255,0.30)] sm:min-h-[52px] sm:px-6 sm:py-3.5 sm:text-[13px]"
                 >
                   Get Started Free
                 </a>
@@ -242,12 +245,12 @@ export default function TradingJournalPage() {
             </div>
 
             {/* COMING SOON */}
-            <div className="flex min-h-[190px] flex-col rounded-[12px] border border-white/[0.08] bg-[#111318]/80 p-3 text-center sm:min-h-[230px] sm:p-7">
-              <h3 className="text-[16px] font-bold text-white sm:text-[20px]">
+            <div className="flex min-h-[215px] flex-col rounded-[12px] border border-white/[0.08] bg-[#111318]/80 p-3 text-center sm:min-h-[230px] sm:p-7">
+              <h3 className="text-[12px] font-bold text-white sm:text-[20px]">
                 Coming Soon
               </h3>
 
-              <p className="mt-2 text-[11px] leading-5 text-[#9299a6] sm:mt-3 sm:text-[13px]">
+              <p className="mt-2 text-[8px] leading-[1.5] text-[#9299a6] sm:mt-3 sm:text-[13px] sm:leading-5">
                 More plans and advanced options will be available soon.
               </p>
 
@@ -255,7 +258,7 @@ export default function TradingJournalPage() {
                 <button
                   type="button"
                   disabled
-                  className="inline-flex min-h-[50px] w-full cursor-not-allowed items-center justify-center rounded-[8px] border border-white/[0.08] bg-[#1b1d22] px-4 py-3 text-[11px] font-bold text-[#777e8a] sm:min-h-[46px] sm:px-6 sm:text-[13px]"
+                  className="inline-flex min-h-[50px] w-full cursor-not-allowed items-center justify-center rounded-[8px] border border-white/[0.08] bg-[#1b1d22] px-3 py-3 text-[9px] font-bold text-[#777e8a] sm:min-h-[52px] sm:px-6 sm:py-3.5 sm:text-[13px]"
                 >
                   Coming Soon
                 </button>

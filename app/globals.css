@@ -304,3 +304,30 @@ body {
     background: #080a0e !important;
   }
 }
+.scrollbar-gold {
+  scrollbar-width: thin;
+  scrollbar-color: #c9a33a #111318;
+}
+
+.scrollbar-gold::-webkit-scrollbar {
+  width: 7px;
+}
+
+.scrollbar-gold::-webkit-scrollbar-track {
+  background: #111318;
+  border-radius: 10px;
+}
+
+.scrollbar-gold::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #f4c44e,
+    #b88924
+  );
+  border-radius: 10px;
+  border: 1px solid #17191e;
+}
+
+.scrollbar-gold::-webkit-scrollbar-thumb:hover {
+  background: #f4c44e;
+}

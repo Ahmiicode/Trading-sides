@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -16,9 +15,9 @@ const included = [
 ];
 
 const indicatorImages = [
-  "/image/indicator-image-1.png",
-  "/image/indicator-image-2.png",
-  "/image/indicator-image-3.png",
+  "/image/indicator-image-11.png",
+  "/image/indicator-image-12.png",
+  "/image/indicator-image-13.png",
 ];
 
 const steps = [
@@ -250,24 +249,27 @@ export default function TradingIndicatorPage() {
             </p>
           </div>
 
-          {/* MOBILE = 1 IMAGE PER ROW
-              DESKTOP = 2 IMAGES PER ROW */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
-            {indicatorImages.map((image, index) => (
-              <div
-                key={image}
-                className="relative aspect-[16/9] min-w-0 overflow-hidden rounded-[8px] border border-white/[0.07] bg-[#0b0e13] transition-[border-color,box-shadow] duration-300 hover:border-[#f5c84c]/45 hover:shadow-[0_0_24px_rgba(245,200,76,0.08)] sm:rounded-[8px]"
-              >
-                <Image
-                  src={image}
-                  alt={`Trading Sides Indicator Example ${index + 1}`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
+          {/* 3 IMAGES
+              MOBILE = 1 IMAGE PER ROW
+              DESKTOP = 2 IMAGES PER ROW
+              FULL IMAGE = NO CROP */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+  {indicatorImages.map((image, index) => (
+    <div
+      key={image}
+      className="relative flex min-h-[220px] min-w-0 items-center justify-center overflow-hidden rounded-[8px] border border-white/[0.07] bg-[#050609] transition-[border-color,box-shadow] duration-300 hover:border-[#f5c84c]/45 hover:shadow-[0_0_24px_rgba(245,200,76,0.08)] sm:min-h-[280px]"
+    >
+      <Image
+        src={image}
+        alt={`Trading Sides Indicator Example ${index + 1}`}
+        width={1200}
+        height={800}
+        sizes="(max-width: 640px) 100vw, 50vw"
+        className="h-auto max-h-full w-full object-contain"
+      />
+    </div>
+  ))}
+</div>
         </div>
       </section>
 
