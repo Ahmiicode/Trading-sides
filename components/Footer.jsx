@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -396,8 +397,8 @@ const termsSections = [
         for any delays or issues arising from incorrect payment details
         provided by you. The payment gateway and processing services are
         provided by third-party providers, and your use of these services is
-        subject to their respective terms and conditions. We are not liable for
-        any issues arising from the payment processing by these third-party
+        subject to their respective terms and conditions. We are not liable
+        for any issues arising from the payment processing by these third-party
         providers.
       </p>
     ),
@@ -470,7 +471,8 @@ export default function Footer() {
           </div>
 
           {/* MIDDLE */}
-          <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-20 lg:mt-9 lg:grid-cols-[1fr_1fr]">
+          {/* MOBILE: 2 COLUMNS | DESKTOP: SAME 2 COLUMNS */}
+          <div className="mt-10 grid grid-cols-2 gap-6 md:gap-20 lg:mt-9 lg:grid-cols-[1fr_1fr]">
 
             {/* QUICK LINKS */}
             <div>
@@ -517,7 +519,7 @@ export default function Footer() {
             </div>
 
             {/* CONTACT */}
-            <div>
+            <div className="min-w-0">
               <h3 className="text-[16px] font-bold text-[#f1f2f4]">
                 Contact
               </h3>
@@ -527,13 +529,13 @@ export default function Footer() {
                 {/* EMAIL */}
                 <a
                   href="mailto:support@tradingsides.com"
-                  className="flex items-center gap-3 text-[14px] text-[#e1e3e7] transition-colors duration-300 hover:text-[#f4c44e]"
+                  className="flex min-w-0 items-center gap-2 text-[13px] text-[#e1e3e7] transition-colors duration-300 hover:text-[#f4c44e] sm:gap-3 sm:text-[14px]"
                 >
-                  <span className="text-[#f4c44e]">
+                  <span className="shrink-0 text-[#f4c44e]">
                     <MailIcon />
                   </span>
 
-                  <span className="break-all">
+                  <span className="min-w-0 break-all">
                     support@tradingsides.com
                   </span>
                 </a>
@@ -541,9 +543,9 @@ export default function Footer() {
                 {/* PHONE */}
                 <a
                   href="tel:+923030703449"
-                  className="flex items-center gap-3 text-[14px] text-[#e1e3e7] transition-colors duration-300 hover:text-[#f4c44e]"
+                  className="flex items-center gap-2 text-[13px] text-[#e1e3e7] transition-colors duration-300 hover:text-[#f4c44e] sm:gap-3 sm:text-[14px]"
                 >
-                  <span className="text-[#f4c44e]">
+                  <span className="shrink-0 text-[#f4c44e]">
                     <PhoneIcon />
                   </span>
 
@@ -551,8 +553,8 @@ export default function Footer() {
                 </a>
 
                 {/* LOCATION */}
-                <div className="flex items-center gap-3 text-[14px] text-[#e1e3e7]">
-                  <span className="text-[#f4c44e]">
+                <div className="flex items-center gap-2 text-[13px] text-[#e1e3e7] sm:gap-3 sm:text-[14px]">
+                  <span className="shrink-0 text-[#f4c44e]">
                     <LocationIcon />
                   </span>
 
@@ -708,3 +710,4 @@ export default function Footer() {
     </>
   );
 }
+

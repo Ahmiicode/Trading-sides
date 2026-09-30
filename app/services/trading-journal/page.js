@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 
-const traderWavesLink = "https://traderwaves.com/?code=D9AA93E4";
+const traderWavesLink = "https://traderwaves.com/?code=D9AA93E";
 
 const features = [
   {
@@ -87,8 +87,9 @@ export default function TradingJournalPage() {
       <section className="relative px-5 pb-10 pt-[125px] sm:px-6 sm:pb-14 sm:pt-[145px] lg:px-12 lg:pb-16 lg:pt-[165px]">
         <div className="mx-auto max-w-[1000px] text-center">
           {/* TITLE */}
-          <h1 className="text-[38px] font-extrabold leading-[1.05] tracking-[-1.5px] text-[#985cff] sm:text-[52px] lg:text-[64px]">
-            TradingJournal
+          <h1 className="text-[38px] font-extrabold leading-[1.05] tracking-[-1.5px] sm:text-[52px] lg:text-[64px]">
+            <span className="text-white">Trading</span>
+            <span className="text-[#985cff]">Journal</span>
           </h1>
 
           {/* LABEL */}
@@ -219,17 +220,28 @@ export default function TradingJournalPage() {
             </p>
           </div>
 
-          {/* MOBILE = 2 BOXES IN ONE ROW */}
+          {/* PRICING CARDS */}
           <div className="grid grid-cols-2 gap-2 sm:gap-5">
-            {/* GET STARTED FREE */}
-            <div className="flex min-h-[215px] flex-col rounded-[12px] border border-[#7546a7]/50 bg-[#0d0b14]/80 p-3 text-center shadow-[0_0_25px_rgba(139,80,255,0.06)] transition-all duration-300 hover:border-[#925cff]/80 hover:shadow-[0_0_30px_rgba(139,80,255,0.15)] sm:min-h-[230px] sm:p-7">
-              <h3 className="text-[12px] font-bold text-white sm:text-[20px]">
-                Get Started Free
-              </h3>
+            {/* CARD 1: REFERRED USERS */}
+            <div className="flex min-h-[215px] flex-col rounded-[12px] border border-[#25193f] bg-[#0d0b14]/80 p-3 text-left shadow-[0_0_25px_rgba(139,80,255,0.06)] transition-all duration-300 hover:border-[#925cff]/80 hover:shadow-[0_0_30px_rgba(139,80,255,0.15)] sm:min-h-[230px] sm:p-7">
+              <div className="mb-3 sm:mb-6">
+                <span className="inline-flex items-center justify-center rounded-full bg-[#1e1438] px-2.5 py-1 text-[8px] font-bold uppercase tracking-wide text-[#9e7be0] sm:px-4 sm:py-1.5 sm:text-[11px]">
+                  Referred Users
+                </span>
+              </div>
+
+              <div className="flex items-baseline">
+                <span className="text-[28px] font-extrabold leading-none text-white sm:text-[46px]">
+                  $0
+                </span>
+
+                <span className="ml-1 text-[9px] font-medium text-[#9299a6] sm:text-[14px]">
+                  /month
+                </span>
+              </div>
 
               <p className="mt-2 text-[8px] leading-[1.5] text-[#9299a6] sm:mt-3 sm:text-[13px] sm:leading-5">
-                Start your trading journal and explore the tools available on
-                TraderWaves.
+                Full access with Paradise partner code
               </p>
 
               <div className="mt-auto pt-4 sm:pt-6">
@@ -237,34 +249,53 @@ export default function TradingJournalPage() {
                   href={traderWavesLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-[50px] w-full items-center justify-center rounded-[8px] bg-gradient-to-r from-[#9254ff] to-[#7b36e8] px-3 py-3 text-[9px] font-bold text-white shadow-[0_8px_25px_rgba(139,80,255,0.22)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(139,80,255,0.30)] sm:min-h-[52px] sm:px-6 sm:py-3.5 sm:text-[13px]"
+                  className="inline-flex min-h-[40px] w-full items-center justify-center rounded-[8px] bg-[#874fff] px-3 py-2 text-[9px] font-bold text-white shadow-[0_8px_25px_rgba(139,80,255,0.22)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(139,80,255,0.30)] sm:min-h-[52px] sm:px-6 sm:py-3.5 sm:text-[13px]"
                 >
                   Get Started Free
                 </a>
               </div>
             </div>
 
-            {/* COMING SOON */}
-            <div className="flex min-h-[215px] flex-col rounded-[12px] border border-white/[0.08] bg-[#111318]/80 p-3 text-center sm:min-h-[230px] sm:p-7">
-              <h3 className="text-[12px] font-bold text-white sm:text-[20px]">
-                Coming Soon
-              </h3>
+            {/* CARD 2: PRO (COMING SOON) */}
+            <div className="flex min-h-[215px] flex-col rounded-[12px] border border-[#25193f] bg-[#0d0b14]/80 p-3 text-left shadow-[0_0_25px_rgba(139,80,255,0.06)] transition-all duration-300 sm:min-h-[230px] sm:p-7">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-1 sm:mb-6">
+                <span className="inline-flex items-center justify-center rounded-full bg-[#1e1438] px-2.5 py-1 text-[8px] font-bold uppercase tracking-wide text-[#9e7be0] sm:px-4 sm:py-1.5 sm:text-[11px]">
+                  Pro
+                </span>
+
+                <span className="inline-flex items-center justify-center rounded-full bg-[#874fff] px-2 py-1 text-[7px] font-bold text-white sm:px-3 sm:py-1.5 sm:text-[10px]">
+                  Coming Soon
+                </span>
+              </div>
+
+              <div className="flex select-none items-baseline blur-[4px]">
+                <span className="text-[28px] font-extrabold leading-none text-white sm:text-[46px]">
+                  $49
+                </span>
+
+                <span className="ml-1 text-[9px] font-medium text-[#9299a6] sm:text-[14px]">
+                  /month
+                </span>
+              </div>
 
               <p className="mt-2 text-[8px] leading-[1.5] text-[#9299a6] sm:mt-3 sm:text-[13px] sm:leading-5">
-                More plans and advanced options will be available soon.
+                Advanced features for pro traders
               </p>
 
               <div className="mt-auto pt-4 sm:pt-6">
                 <button
-                  type="button"
                   disabled
-                  className="inline-flex min-h-[50px] w-full cursor-not-allowed items-center justify-center rounded-[8px] border border-white/[0.08] bg-[#1b1d22] px-3 py-3 text-[9px] font-bold text-[#777e8a] sm:min-h-[52px] sm:px-6 sm:py-3.5 sm:text-[13px]"
+                  className="inline-flex min-h-[40px] w-full cursor-not-allowed items-center justify-center rounded-[8px] bg-[#231a3f] px-3 py-2 text-[9px] font-bold text-[#b4a6d4] transition-all duration-300 sm:min-h-[52px] sm:px-6 sm:py-3.5 sm:text-[13px]"
                 >
                   Coming Soon
                 </button>
               </div>
             </div>
           </div>
+
+          {/* COMING SOON */}
+         
+          
         </div>
       </section>
 
@@ -304,3 +335,4 @@ export default function TradingJournalPage() {
     </main>
   );
 }
+
