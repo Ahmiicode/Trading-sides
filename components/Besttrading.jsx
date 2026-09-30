@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 
 const platforms = [
@@ -35,26 +36,19 @@ export default function Besttrading() {
             <div
               key={platform.name}
               tabIndex={0}
-              className="relative flex flex-col items-center rounded-[11px] border border-[#8a6a1d]/80 bg-[#101216]/95 px-5 py-5 text-center shadow-[0_0_18px_rgba(245,190,55,0.06)] outline-none backdrop-blur-sm transition-[border-color,box-shadow] duration-300 hover:border-[#d6aa3c] hover:shadow-[0_0_42px_rgba(245,190,55,0.22)] focus:border-[#d6aa3c] focus:shadow-[0_0_42px_rgba(245,190,55,0.22)] active:border-[#d6aa3c] active:shadow-[0_0_42px_rgba(245,190,55,0.28)] sm:min-h-[390px] sm:rounded-[12px] sm:px-8 sm:py-9 lg:min-h-[410px]">
+              className="relative flex flex-col items-center rounded-[11px] border border-[#8a6a1d]/80 bg-[#101216]/95 px-5 py-5 text-center shadow-[0_0_18px_rgba(245,190,55,0.06)] outline-none backdrop-blur-sm transition-[border-color,box-shadow] duration-300 hover:border-[#d6aa3c] hover:shadow-[0_0_42px_rgba(245,190,55,0.22)] focus:border-[#d6aa3c] focus:shadow-[0_0_42px_rgba(245,190,55,0.22)] active:border-[#d6aa3c] active:shadow-[0_0_42px_rgba(245,190,55,0.28)] sm:min-h-[390px] sm:rounded-[12px] sm:px-8 sm:py-9 lg:min-h-[410px]"
+            >
 
-              {/* LOGO */}
-              <div className="relative mb-3 h-[52px] w-[70px] sm:mb-5 sm:h-[72px] sm:w-[90px]">
+              {/* PLATFORM IMAGE */}
+              <div className="relative mb-3 h-[130px] w-[230px] sm:mb-5 sm:h-[100px] sm:w-[150px]">
                 <Image
                   src={platform.image}
-                  alt={`${platform.name} logo`}
+                  alt="Trading platform"
                   fill
-                  sizes="(max-width: 639px) 70px, 90px"
+                  sizes="(max-width: 639px) 230px, 150px"
                   className="object-contain"
                 />
               </div>
-
-              {/* NAME */}
-              <h3 className="text-[16px] font-bold text-[#f2f2f3] sm:text-[18px]">
-                {platform.name}
-              </h3>
-
-              {/* GOLD LINE */}
-              <div className="mt-2 h-px w-8 bg-[#d6aa3c] sm:mt-3 sm:w-9" />
 
               {/* DESCRIPTION */}
               <p className="mt-4 max-w-[270px] text-[11px] leading-[1.55] text-[#a3abb8] sm:mt-7 sm:max-w-[310px] sm:text-[13px] sm:leading-[1.6]">
@@ -82,3 +76,4 @@ export default function Besttrading() {
     </section>
   );
 }
+

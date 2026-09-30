@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -168,15 +169,15 @@ export default function VIPSignalsPage() {
               href={xmLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mx-auto flex w-full max-w-[190px] items-center justify-center rounded-[10px] border border-[#806621] bg-[#0d1015]/90 px-5 py-4 transition-[border-color,background-color,box-shadow] duration-300 hover:border-[#f5c84c] hover:bg-[#17191e] hover:shadow-[0_0_28px_rgba(245,200,76,0.18)] sm:max-w-[220px] sm:px-6 sm:py-5"
+              className="group mx-auto flex w-full max-w-[250px] items-center justify-center rounded-[10px] border border-[#806621] bg-[#0d1015]/90 px-5 py-5 transition-[border-color,background-color,box-shadow] duration-300 hover:border-[#f5c84c] hover:bg-[#17191e] hover:shadow-[0_0_28px_rgba(245,200,76,0.18)] sm:max-w-[280px] sm:px-6 sm:py-6"
             >
-              <div className="relative h-[48px] w-[105px] sm:h-[58px] sm:w-[125px]">
+              <div className="relative h-[80px] w-[190px] sm:h-[90px] sm:w-[220px]">
                 <Image
                   src="/image/xm.png"
                   alt="XM"
                   fill
                   priority
-                  sizes="125px"
+                  sizes="(max-width: 639px) 190px, 220px"
                   className="object-contain"
                 />
               </div>
@@ -290,12 +291,12 @@ export default function VIPSignalsPage() {
             <div className="my-5 h-px w-full bg-white/[0.07] sm:my-6" />
 
             {/* XM LOGO */}
-            <div className="relative mx-auto h-[45px] w-[100px] sm:h-[52px] sm:w-[115px]">
+            <div className="relative mx-auto h-[70px] w-[160px] sm:h-[75px] sm:w-[180px]">
               <Image
                 src="/image/xm.png"
                 alt="XM"
                 fill
-                sizes="115px"
+                sizes="(max-width: 639px) 160px, 180px"
                 className="object-contain"
               />
             </div>
@@ -421,3 +422,4 @@ export default function VIPSignalsPage() {
     </main>
   );
 }
+
