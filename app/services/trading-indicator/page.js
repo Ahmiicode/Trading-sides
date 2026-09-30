@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -18,24 +19,26 @@ const indicatorImages = [
   "/image/indicator-image-1.png",
   "/image/indicator-image-2.png",
   "/image/indicator-image-3.png",
-  "/image/indicator-image-4.png",
 ];
 
 const steps = [
   {
     number: "1",
     title: "Open XM Account",
-    description: "Create your account using our official XM partner link.",
+    description:
+      "Create your account using our official XM partner link.",
   },
   {
     number: "2",
     title: "Complete Account",
-    description: "Complete the required registration and verification.",
+    description:
+      "Complete the required registration and verification.",
   },
   {
     number: "3",
     title: "Request Indicator",
-    description: "Contact Trading Sides after completing the required steps.",
+    description:
+      "Contact Trading Sides after completing the required steps.",
   },
 ];
 
@@ -71,11 +74,9 @@ export default function TradingIndicatorPage() {
 
   return (
     <main className="relative min-h-screen overflow-hidden text-white">
-
       {/* HERO */}
       <section className="relative px-4 pb-10 pt-[115px] sm:px-6 sm:pb-14 sm:pt-[140px] lg:px-12 lg:pt-[155px]">
         <div className="mx-auto max-w-[850px] text-center">
-
           <div className="mb-3 inline-flex rounded-full border border-[#f5c84c]/35 bg-[#f5c84c]/[0.06] px-3 py-1 text-[8px] font-bold uppercase tracking-[1px] text-[#f5c84c] sm:text-[9px]">
             Trading Indicator
           </div>
@@ -88,16 +89,13 @@ export default function TradingIndicatorPage() {
             The Trading Sides Indicator gives you the tools to analyze
             the market and trade with greater confidence.
           </p>
-
         </div>
       </section>
 
       {/* GET FREE ACCESS */}
       <section className="relative px-4 pb-14 sm:px-6 sm:pb-20 lg:px-12">
         <div className="mx-auto w-full max-w-[720px] rounded-[12px] border border-[#f5c84c]/55 bg-[#12151a]/90 p-4 shadow-[0_0_30px_rgba(245,200,76,0.05)] sm:p-8">
-
           <div className="text-center">
-
             <h2 className="text-[17px] font-bold text-[#f5c84c] sm:text-[22px]">
               Get FREE Access to Indicator
             </h2>
@@ -106,12 +104,10 @@ export default function TradingIndicatorPage() {
               Open an account through our XM partner link and follow
               the required steps to request indicator access.
             </p>
-
           </div>
 
-          {/* 3 STEPS ONE ROW ON MOBILE */}
+          {/* 3 STEPS */}
           <div className="relative mt-7 grid grid-cols-3 gap-2 text-center sm:gap-5">
-
             <div className="absolute left-[16%] right-[16%] top-[17px] h-px bg-gradient-to-r from-transparent via-[#f5c84c]/30 to-transparent" />
 
             {steps.map((step) => (
@@ -132,12 +128,10 @@ export default function TradingIndicatorPage() {
                 </p>
               </div>
             ))}
-
           </div>
 
           {/* XM */}
           <div className="mt-8 text-center">
-
             <p className="mb-3 text-[8px] uppercase tracking-[1.2px] text-[#777f8c] sm:text-[9px]">
               Official Partner
             </p>
@@ -146,46 +140,39 @@ export default function TradingIndicatorPage() {
               href={xmLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="mx-auto flex w-full max-w-[185px] items-center justify-center rounded-[10px] border border-[#806621] bg-[#0d1015]/90 px-5 py-4 transition-[border-color,background-color,box-shadow] duration-300 hover:border-[#f5c84c] hover:bg-[#17191e] hover:shadow-[0_0_28px_rgba(245,200,76,0.16)] sm:max-w-[220px] sm:px-6 sm:py-5"
+              className="mx-auto block w-full"
             >
-              <div className="relative h-[48px] w-[105px] sm:h-[58px] sm:w-[125px]">
+              <div className="relative mx-auto h-[150px] w-full max-w-[420px] sm:h-[180px] sm:max-w-[520px]">
                 <Image
                   src="/image/xm.png"
                   alt="XM"
                   fill
                   priority
-                  sizes="125px"
+                  sizes="(max-width: 640px) 100vw, 520px"
                   className="object-contain"
                 />
               </div>
             </a>
-
           </div>
 
           {/* CONTACT */}
           <div className="mt-7 text-center">
-
             <Link
               href="/contact?service=trading-indicator"
               className="inline-flex rounded-[7px] bg-[#f5c84c] px-7 py-3 text-[10px] font-bold text-[#111318] shadow-[0_5px_20px_rgba(245,200,76,0.18)] transition-[background-color,box-shadow] duration-300 hover:bg-[#ffda70] hover:shadow-[0_0_25px_rgba(245,200,76,0.25)] sm:px-9 sm:text-[12px]"
             >
               Get Free Access
             </Link>
-
           </div>
-
         </div>
       </section>
 
       {/* WHAT'S INCLUDED */}
       <section className="relative px-4 py-14 sm:px-6 sm:py-20 lg:px-12">
         <div className="mx-auto max-w-[720px] rounded-[12px] border border-[#f5c84c]/55 bg-[#12151a]/90 p-4 transition-[border-color,background-color,box-shadow] duration-300 hover:border-[#f5c84c]/75 hover:bg-[#15181d] hover:shadow-[0_0_28px_rgba(245,200,76,0.08)] sm:p-8">
-
           <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
-
             {/* LEFT */}
             <div>
-
               <h2 className="text-[22px] font-bold text-white sm:text-[26px]">
                 What&apos;s Included?
               </h2>
@@ -194,9 +181,7 @@ export default function TradingIndicatorPage() {
                 Your complete toolkit for smarter market analysis.
               </p>
 
-              {/* 2 PER ROW MOBILE */}
               <div className="mt-5 grid grid-cols-2 gap-2 sm:mt-6 sm:gap-3">
-
                 {included.map((item) => (
                   <div
                     key={item}
@@ -211,23 +196,27 @@ export default function TradingIndicatorPage() {
                     </p>
                   </div>
                 ))}
-
               </div>
-
             </div>
 
             {/* RIGHT */}
             <div className="text-center md:border-l md:border-white/[0.07] md:pl-10">
-
-              <div className="relative mx-auto h-[48px] w-[105px] sm:h-[55px] sm:w-[120px]">
-                <Image
-                  src="/image/xm.png"
-                  alt="XM"
-                  fill
-                  sizes="120px"
-                  className="object-contain"
-                />
-              </div>
+              <a
+                href={xmLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-auto block w-full"
+              >
+                <div className="relative mx-auto h-[120px] w-full max-w-[300px] sm:h-[145px] sm:max-w-[360px]">
+                  <Image
+                    src="/image/xm.png"
+                    alt="XM"
+                    fill
+                    sizes="(max-width: 640px) 100vw, 360px"
+                    className="object-contain"
+                  />
+                </div>
+              </a>
 
               <p className="mt-4 text-[17px] font-bold text-[#f5c84c] sm:text-[20px]">
                 Trading Sides Indicator
@@ -243,20 +232,15 @@ export default function TradingIndicatorPage() {
               >
                 Get Indicator
               </Link>
-
             </div>
-
           </div>
-
         </div>
       </section>
 
       {/* SEE IT IN ACTION */}
-      <section className="relative px-3 py-14 sm:px-6 sm:py-20 lg:px-12 lg:py-24">
+      <section className="relative px-4 py-14 sm:px-6 sm:py-20 lg:px-12 lg:py-24">
         <div className="mx-auto max-w-[1050px]">
-
           <div className="mb-8 text-center sm:mb-12">
-
             <h2 className="text-[26px] font-bold text-[#f5c84c] sm:text-[34px]">
               See It In Action
             </h2>
@@ -264,42 +248,37 @@ export default function TradingIndicatorPage() {
             <p className="mx-auto mt-3 max-w-[500px] text-[10px] leading-5 text-[#89929f] sm:text-[13px]">
               Works seamlessly across multiple markets and setups.
             </p>
-
           </div>
 
-          {/* 2 IMAGES PER ROW MOBILE */}
-          <div className="grid grid-cols-2 gap-2.5 sm:gap-5">
-
+          {/* MOBILE = 1 IMAGE PER ROW
+              DESKTOP = 2 IMAGES PER ROW */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             {indicatorImages.map((image, index) => (
               <div
                 key={image}
-                className="relative aspect-[16/9] min-w-0 overflow-hidden rounded-[7px] border border-white/[0.07] bg-[#0b0e13] transition-[border-color,box-shadow] duration-300 hover:border-[#f5c84c]/45 hover:shadow-[0_0_24px_rgba(245,200,76,0.08)] sm:rounded-[8px]"
+                className="relative aspect-[16/9] min-w-0 overflow-hidden rounded-[8px] border border-white/[0.07] bg-[#0b0e13] transition-[border-color,box-shadow] duration-300 hover:border-[#f5c84c]/45 hover:shadow-[0_0_24px_rgba(245,200,76,0.08)] sm:rounded-[8px]"
               >
                 <Image
                   src={image}
                   alt={`Trading Sides Indicator Example ${index + 1}`}
                   fill
-                  sizes="(max-width: 640px) 50vw, 50vw"
+                  sizes="(max-width: 640px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>
             ))}
-
           </div>
-
         </div>
       </section>
 
       {/* FAQ */}
       <section className="relative px-4 py-14 sm:px-6 sm:py-20 lg:px-12">
         <div className="mx-auto max-w-[720px]">
-
           <h2 className="mb-7 text-center text-[25px] font-bold text-[#f5c84c] sm:mb-8 sm:text-[32px]">
             Frequently Asked Questions
           </h2>
 
           <div className="space-y-3">
-
             {faqs.map((faq, index) => {
               const isOpen = openFAQ === index;
 
@@ -312,7 +291,6 @@ export default function TradingIndicatorPage() {
                       : "border-[#806621] hover:border-[#d4a72e] hover:bg-[#181b20]"
                   }`}
                 >
-
                   <button
                     type="button"
                     onClick={() => toggleFAQ(index)}
@@ -340,27 +318,21 @@ export default function TradingIndicatorPage() {
                     }`}
                   >
                     <div className="overflow-hidden">
-
                       <p className="border-t border-white/[0.05] px-4 py-4 text-[9px] leading-5 text-[#929aa7] sm:px-5 sm:text-[11px]">
                         {faq.answer}
                       </p>
-
                     </div>
                   </div>
-
                 </div>
               );
             })}
-
           </div>
-
         </div>
       </section>
 
       {/* FINAL CTA */}
       <section className="relative px-4 pb-24 pt-14 text-center sm:px-6 sm:pb-32 sm:pt-20 lg:px-12">
         <div className="mx-auto max-w-[700px]">
-
           <div className="mx-auto mb-9 h-px w-[70%] bg-gradient-to-r from-transparent via-[#f5c84c]/40 to-transparent" />
 
           <h2 className="text-[27px] font-bold leading-tight text-[#f5c84c] sm:text-[38px]">
@@ -387,10 +359,8 @@ export default function TradingIndicatorPage() {
               ← Back to Services
             </Link>
           </div>
-
         </div>
       </section>
-
     </main>
   );
 }
