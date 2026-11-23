@@ -1,160 +1,143 @@
+
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Platforms", href: "/platforms" },
+  { name: "Social", href: "/social" },
+  { name: "Giveaway", href: "/giveaway" },
+];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const closeMenu = () => {
-    setMenuOpen(false);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const openChat = () => {
+    closeMenu();
+    window.dispatchEvent(new Event("open-chatbot"));
   };
 
-  const navLinks = [
-    { name: "Home", href: "/#home" },
-    { name: "Services", href: "/#services" },
-    { name: "Platforms", href: "/#platforms" },
-    { name: "Social", href: "/#social" },
-    { name: "Giveaway", href: "/#giveaway" },
-  ];
-
   return (
-    <header className="fixed left-0 top-0 z-50 w-full">
+    <header className="fixed left-0 top-0 z-[1000] w-full border-b border-white/10 bg-[#101114]/95 backdrop-blur-xl">
+      <nav className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
-      {/* NAVBAR BACKGROUND */}
-      <div className="border-b border-white/[0.04] bg-[#090b0f]/75 backdrop-blur-xl lg:border-none lg:bg-transparent lg:backdrop-blur-none">
-        <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-4 sm:h-[78px] sm:px-6 lg:h-[90px] lg:px-12">
+        {/* LOGO */}
+        <Link
+          href="/"
+          onClick={closeMenu}
+          className="shrink-0 text-2xl font-bold tracking-tight text-white"
+        >
+          Trading<span className="text-[#f4c44e]">Sides</span>
+        </Link>
 
-          {/* LOGO */}
+        {/* DESKTOP NAVIGATION */}
+        <div className="hidden items-center gap-8 lg:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-gray-300 transition-colors duration-300 hover:text-[#f4c44e]"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* RIGHT SIDE BUTTONS */}
+        <div className="flex items-center gap-2 sm:gap-3">
+
+          {/* DESKTOP CONTACT */}
           <Link
-            href="/#home"
+            href="/contact"
             onClick={closeMenu}
-            className="flex min-w-0 items-center gap-2.5 sm:gap-3"
+            className="hidden rounded-full bg-[#f4c44e] px-6 py-3 text-[13px] font-semibold text-[#101114] transition-all duration-300 hover:bg-[#ffd363] lg:inline-flex"
           >
-            <div className="relative h-[38px] w-[38px] shrink-0 sm:h-[42px] sm:w-[42px]">
-              <Image
-                src="/image/logo.png"
-                alt="Trading Sides"
-                fill
-                priority
-                sizes="42px"
-                className="object-contain"
-              />
-            </div>
-
-            <span className="truncate text-[15px] font-semibold text-[#f4c44e] sm:text-[18px]">
-              Trading Sides
-            </span>
+            Contact
           </Link>
 
-          {/* DESKTOP MENU */}
-          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center rounded-full border border-[#7c642e]/60 bg-[#111318]/80 p-[5px] shadow-[0_8px_30px_rgba(0,0,0,0.20)] backdrop-blur-xl lg:flex">
-            {navLinks.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={closeMenu}
-                className="rounded-full px-5 py-[9px] text-[13px] font-medium text-[#b5bac4] transition duration-300 hover:bg-white/[0.04] hover:text-white"
+          {/* LIVE CHAT - DESKTOP + MOBILE */}
+          <button
+            type="button"
+            onClick={openChat}
+            className="inline-flex items-center gap-2 rounded-full border border-[#f4c44e]/40 bg-[#f4c44e]/10 px-4 py-2.5 text-xs font-semibold text-[#f4c44e] transition-all duration-300 hover:border-[#f4c44e] hover:bg-[#f4c44e]/20 sm:px-5 sm:py-3 sm:text-[13px]"
+          >
+            <span className="h-2 w-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]" />
+            Live Chat
+          </button>
+
+          {/* MOBILE HAMBURGER */}
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white transition-colors hover:border-[#f4c44e]/50 hover:text-[#f4c44e] lg:hidden"
+          >
+            {isMenuOpen ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="21"
+                height="21"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
               >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* RIGHT SIDE */}
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-
-            {/* DESKTOP / TOP CONTACT */}
-            <Link
-              href="/contact"
-              onClick={closeMenu}
-              className="rounded-full bg-[#f4c44e] px-4 py-[10px] text-[12px] font-semibold text-[#101114] shadow-[0_5px_25px_rgba(244,196,78,0.15)] transition-[background-color,box-shadow] duration-300 hover:bg-[#ffd363] hover:shadow-[0_0_28px_rgba(244,196,78,0.28)] sm:px-6 sm:py-[11px] sm:text-[13px] lg:px-7 lg:py-[12px]"
-            >
-              Contact
-            </Link>
-
-            {/* MOBILE HAMBURGER */}
-            <button
-              type="button"
-              onClick={() => setMenuOpen((prev) => !prev)}
-              aria-label="Toggle navigation menu"
-              aria-expanded={menuOpen}
-              className="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-[#7c642e]/60 bg-[#111318]/90 transition-[border-color,box-shadow] duration-300 hover:border-[#f4c44e]/70 hover:shadow-[0_0_20px_rgba(244,196,78,0.12)] lg:hidden"
-            >
-              <div className="relative h-[16px] w-[19px]">
-
-                <span
-                  className={`absolute left-0 top-0 h-[1.5px] w-full rounded-full bg-[#f4c44e] transition-all duration-300 ${
-                    menuOpen ? "top-[7px] rotate-45" : ""
-                  }`}
-                />
-
-                <span
-                  className={`absolute left-0 top-[7px] h-[1.5px] w-full rounded-full bg-[#f4c44e] transition-all duration-300 ${
-                    menuOpen ? "scale-x-0 opacity-0" : ""
-                  }`}
-                />
-
-                <span
-                  className={`absolute bottom-0 left-0 h-[1.5px] w-full rounded-full bg-[#f4c44e] transition-all duration-300 ${
-                    menuOpen ? "bottom-[7px] -rotate-45" : ""
-                  }`}
-                />
-
-              </div>
-            </button>
-
-          </div>
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="21"
+                height="21"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <path d="M4 7h16" />
+                <path d="M4 12h16" />
+                <path d="M4 17h16" />
+              </svg>
+            )}
+          </button>
         </div>
-      </div>
+      </nav>
 
       {/* MOBILE MENU */}
-      <div
-        className={`overflow-hidden px-4 transition-all duration-500 ease-out sm:px-6 lg:hidden ${
-          menuOpen
-            ? "max-h-[430px] translate-y-0 opacity-100"
-            : "pointer-events-none max-h-0 -translate-y-3 opacity-0"
-        }`}
-      >
-        <div className="mx-auto mt-3 max-w-[600px] rounded-[20px] border border-[#7c642e]/50 bg-[#0d0f13]/95 p-2 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
-
-          {/* MOBILE LINKS */}
-          <nav className="flex flex-col">
-            {navLinks.map((item, index) => (
+      {isMenuOpen && (
+        <div className="border-t border-white/10 bg-[#101114] px-5 pb-6 pt-4 lg:hidden">
+          <div className="flex flex-col">
+            {navLinks.map((link) => (
               <Link
-                key={item.name}
-                href={item.href}
+                key={link.name}
+                href={link.href}
                 onClick={closeMenu}
-                className={`group flex items-center justify-between rounded-[14px] px-4 py-[14px] text-[14px] font-medium text-[#b5bac4] transition duration-300 hover:bg-white/[0.04] hover:text-white ${
-                  index !== navLinks.length - 1
-                    ? "border-b border-white/[0.035]"
-                    : ""
-                }`}
+                className="border-b border-white/5 py-4 text-sm font-medium text-gray-300 transition-colors hover:text-[#f4c44e]"
               >
-                <span>{item.name}</span>
-
-                <span className="text-[16px] text-[#6f747d] transition duration-300 group-hover:translate-x-1 group-hover:text-[#f4c44e]">
-                  →
-                </span>
+                {link.name}
               </Link>
             ))}
-          </nav>
 
-          {/* MOBILE CONTACT */}
-          <div className="mt-2 border-t border-white/[0.05] p-2">
+            {/* MOBILE CONTACT ONLY */}
             <Link
               href="/contact"
               onClick={closeMenu}
-              className="block w-full rounded-[13px] bg-[#f4c44e] py-[13px] text-center text-[13px] font-semibold text-[#101114] shadow-[0_6px_25px_rgba(244,196,78,0.14)] transition-[background-color,box-shadow] duration-300 hover:bg-[#ffd363] hover:shadow-[0_0_25px_rgba(244,196,78,0.22)]"
+              className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#f4c44e] px-6 py-3 text-sm font-semibold text-[#101114] transition-colors hover:bg-[#ffd363]"
             >
               Contact Us
             </Link>
           </div>
-
         </div>
-      </div>
-
+      )}
     </header>
   );
 }
