@@ -9,8 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@google/genai": "^3.4.0",
     "lucide-react": "^1.48.0",
+    "mongoose": "^9.12.2",
     "next": "^15.5.27",
+    "openai": "^7.57.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },

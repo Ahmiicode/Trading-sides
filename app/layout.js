@@ -1,3 +1,4 @@
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -5,6 +6,7 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsApp from "@/components/WhatsApp";
+import Chatbot from "@/components/Chatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,7 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[#07090d] lg:bg-transparent">
-        
+
         <AnimatedBackground />
 
         <div className="relative z-50">
@@ -44,6 +46,8 @@ export default function RootLayout({ children }) {
         </div>
 
         <WhatsApp />
+
+        <Chatbot />
 
       </body>
     </html>
