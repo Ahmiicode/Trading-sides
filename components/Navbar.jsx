@@ -1,8 +1,8 @@
-
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -26,22 +26,32 @@ export default function Navbar() {
     <header className="fixed left-0 top-0 z-[1000] w-full border-b border-white/10 bg-[#101114]/95 backdrop-blur-xl">
       <nav className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
-        {/* LOGO */}
+        {/* LOGO IMAGE + SINGLE GOLDEN BRAND NAME */}
         <Link
           href="/"
           onClick={closeMenu}
-          className="shrink-0 text-2xl font-bold tracking-tight text-white"
+          className="flex shrink-0 items-center gap-2.5"
         >
-          Trading<span className="text-[#f4c44e]">Sides</span>
+          <Image
+            src="/image/logo.png"
+            alt="Trading Sides Logo"
+            width={34}
+            height={34}
+            className="h-8 w-8 shrink-0 rounded-md object-contain sm:h-9 sm:w-9"
+          />
+
+          <span className="text-lg font-bold tracking-tight text-[#f4c44e] sm:text-2xl">
+            Trading Sides
+          </span>
         </Link>
 
-        {/* DESKTOP NAVIGATION */}
-        <div className="hidden items-center gap-8 lg:flex">
+        {/* DESKTOP NAVIGATION LINKS INSIDE ROUND BOX */}
+        <div className="hidden items-center gap-1 rounded-full border border-white/10 bg-[#18191d]/90 px-3 py-1.5 shadow-inner lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-gray-300 transition-colors duration-300 hover:text-[#f4c44e]"
+              className="rounded-full px-4 py-1.5 text-sm font-medium text-gray-300 transition-all duration-300 hover:bg-[#f4c44e]/10 hover:text-[#f4c44e]"
             >
               {link.name}
             </Link>
@@ -60,7 +70,7 @@ export default function Navbar() {
             Contact
           </Link>
 
-          {/* LIVE CHAT - DESKTOP + MOBILE */}
+          {/* LIVE CHAT - MOBILE + DESKTOP */}
           <button
             type="button"
             onClick={openChat}
@@ -127,7 +137,6 @@ export default function Navbar() {
               </Link>
             ))}
 
-            {/* MOBILE CONTACT ONLY */}
             <Link
               href="/contact"
               onClick={closeMenu}
