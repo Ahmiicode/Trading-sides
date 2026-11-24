@@ -1,4 +1,3 @@
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -17,11 +16,19 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 export const metadata = {
   title: "Trading Sides",
   description: "Where Precision Meets Performance",
-};
+  icons: {
+    icon: [
+      {
+        url: "/image/logo.jpeg",
+        type: "image/jpeg",
+      },
+    ],
+    apple: "/image/logo.png",
+  },
+};;
 
 export default function RootLayout({ children }) {
   return (

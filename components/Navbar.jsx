@@ -27,23 +27,23 @@ export default function Navbar() {
       <nav className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
         {/* LOGO IMAGE + SINGLE GOLDEN BRAND NAME */}
-        <Link
-          href="/"
-          onClick={closeMenu}
-          className="flex shrink-0 items-center gap-2.5"
-        >
-          <Image
-            src="/image/logo.png"
-            alt="Trading Sides Logo"
-            width={34}
-            height={34}
-            className="h-8 w-8 shrink-0 rounded-md object-contain sm:h-9 sm:w-9"
-          />
+       <Link
+  href="/"
+  onClick={closeMenu}
+  className="flex shrink-0 items-center gap-2.5"
+>
+  <Image
+    src="/image/logo.png"
+    alt="Trading Sides Logo"
+    width={60}
+    height={60}
+    className="h-14 w-14 shrink-0 rounded-md object-contain"
+  />
 
-          <span className="text-lg font-bold tracking-tight text-[#f4c44e] sm:text-2xl">
-            Trading Sides
-          </span>
-        </Link>
+  <span className="flex items-center self-center text-[18px] font-semibold leading-none tracking-tight text-[#f4c44e] sm:text-[20px]">
+    Trading Sides
+  </span>
+</Link>
 
         {/* DESKTOP NAVIGATION LINKS INSIDE ROUND BOX */}
         <div className="hidden items-center gap-1 rounded-full border border-white/10 bg-[#18191d]/90 px-3 py-1.5 shadow-inner lg:flex">
